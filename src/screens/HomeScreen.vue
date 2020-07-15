@@ -1,15 +1,29 @@
 <template>
-
-    <view class="container">
-        <text class="text-color-primary">{{title}}</text>
+   <view>
+        <text>{{title}}</text>
+       <text>{{testingData}}</text>
         <Hello/>
-    </view>
+       <button title="Go to Screen 1" :on-press="() => navigate('screen1')"/>
+
+   </view>
 </template>
 <script>
-    import Hello from '../components/Hello'
+    import Hello from '@/components/Hello'
     export default {
         components: {
             Hello
+        },
+        // props: ['testingData', 'navigate'],
+        props: {
+            testingData: {
+                type: String,
+                required: false
+
+            },
+            navigate: {
+                type: Function,
+                required: true
+            }
         },
         data () {
             return {
@@ -18,15 +32,3 @@
         }
     }
 </script>
-
-<style>
-    .container {
-        background-color: white;
-        align-items: center;
-        justify-content: center;
-        flex: 1;
-    }
-    .text-color-primary {
-        color: blue;
-    }
-</style>
